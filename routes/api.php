@@ -12,4 +12,6 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('fauna')->group(function (){
     Route::get('/', [FaunaController::class, 'show_all_fauna'])->name('fauna.all');
+    Route::get('/{id}', [FaunaController::class, 'get_one_fauna'])->name('fauna.single');
+
 });
