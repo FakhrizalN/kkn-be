@@ -19,4 +19,6 @@ class Fauna extends Model
         'panjang',
         'foto',
     ];
+    public $timestamps = false;
+
 }
