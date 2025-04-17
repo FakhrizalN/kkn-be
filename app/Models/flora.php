@@ -17,4 +17,5 @@ class Flora extends Model
         'distribusi',
         'foto',
     ];
+    public $timestamps = false;
 }
