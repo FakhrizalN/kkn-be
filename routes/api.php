@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FaunaController;
 use App\Http\Controllers\FloraController;
+use App\Http\Controllers\ArtikelController;
 
 Route::prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
@@ -25,4 +26,12 @@ Route::prefix('flora')->group(function (){
     Route::delete('/{id}', [FloraController::class, 'delete_flora'])->name('flora.delete')->middleware('auth:sanctum');
     Route::post('/', [FloraController::class, 'create_flora'])->name('flora.create')->middleware('auth:sanctum');
     Route::put('/{id}', [FloraController::class, 'update_flora'])->name('flora.update')->middleware('auth:sanctum');
+});
+
+Route::prefix('artikel')->group(function (){
+    Route::get('/', [ArtikelController::class, 'show_all_artikel'])->name('artikel.all');
+    Route::get('/{id}', [ArtikelController::class, 'get_one_artikel'])->name('artikel.single');
+    Route::delete('/{id}', [ArtikelController::class, 'delete_artikel'])->name('artikel.delete')->middleware('auth:sanctum');
+    Route::post('/', [ArtikelController::class, 'create_artikel'])->name('artikel.create')->middleware('auth:sanctum');
+    Route::put('/{id}', [ArtikelController::class, 'update_artikel'])->name('artikel.update')->middleware('auth:sanctum');
 });

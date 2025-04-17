@@ -18,7 +18,7 @@ class ArtikelController extends Controller
             ]);
     }
 
-    public function get_one_flora(Request $request, $id) {
+    public function get_one_artikel(Request $request, $id) {
         $artikels = Artikels::where('id', $id)->first();
 
         if (!$artikels) {
