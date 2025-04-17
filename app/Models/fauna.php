@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class fauna extends Model
+class Fauna extends Model
 {
-    protected $table = 'fauna';
-
+    use HasFactory;
+    
     protected $fillable = [
         'nama',
         'nama_latin',
