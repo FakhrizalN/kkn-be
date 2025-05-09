@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const Flora = () => {
     const [floraList, setFloraList] = useState([]);
@@ -9,8 +8,9 @@ const Flora = () => {
     useEffect(() => {
         const fetchFlora = async () => {
             try {
-                const response = await axios.get("/api/flora");
-                setFloraList(response.data);
+                const response = await axios.get("/api/flora/");
+                console.log("Response data:", response.data);
+                setFloraList(response.data.data); // Akses array di dalam properti "data"
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching flora data:", error);
@@ -22,43 +22,38 @@ const Flora = () => {
     }, []);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <p style={{ textAlign: "center", fontSize: "18px" }}>Loading...</p>;
+    }
+
+    if (!Array.isArray(floraList)) {
+        return <p style={{ textAlign: "center", color: "red" }}>Error: Data tidak valid.</p>;
     }
 
     return (
-        <div>
-            <h1>Daftar Flora</h1>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
+        <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+            <h1 style={{ textAlign: "center", color: "#4CAF50" }}>Daftar Flora</h1>
+            <ul style={{ listStyleType: "none", padding: 0 }}>
                 {floraList.map((flora) => (
-                    <Link
-                        to={`/flora/${flora.id}`}
+                    <li
                         key={flora.id}
                         style={{
-                            textDecoration: "none",
-                            color: "inherit",
+                            margin: "10px 0",
+                            padding: "15px",
+                            border: "1px solid #ddd",
+                            borderRadius: "8px",
+                            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                            backgroundColor: "#f9f9f9",
                         }}
                     >
-                        <div
-                            style={{
-                                border: "1px solid #ccc",
-                                borderRadius: "8px",
-                                padding: "16px",
-                                cursor: "pointer",
-                                width: "200px",
-                                textAlign: "center",
-                            }}
-                        >
-                            <img
-                                src={flora.photo}
-                                alt={flora.local_name}
-                                style={{ width: "100%", borderRadius: "8px" }}
-                            />
-                            <h3>{flora.local_name}</h3>
-                            <p><i>{flora.latin_name}</i></p>
-                        </div>
-                    </Link>
+                        <strong style={{ fontSize: "18px", color: "#333" }}>
+                            {flora.local_name}
+                        </strong>
+                        <p style={{ margin: "5px 0", fontStyle: "italic", color: "#555" }}>
+                            {flora.latin_name}
+                        </p>
+                    </li>
                 ))}
-            </div>
+            </ul>
         </div>
     );
 };

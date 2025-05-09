@@ -1,17 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
-const FloraDetail = () => {
-    const { id } = useParams();
+const FloraDetail = ({ floraId }) => {
     const [flora, setFlora] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchFloraDetail = async () => {
             try {
-                const response = await axios.get(`/api/flora/${id}`);
-                setFlora(response.data);
+                const response = await axios.get(`/api/flora/${floraId}`);
+                console.log("Flora Detail Response:", response.data);
+                setFlora(response.data.data); // Akses data flora di dalam properti "data"
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching flora detail:", error);
@@ -20,7 +19,7 @@ const FloraDetail = () => {
         };
 
         fetchFloraDetail();
-    }, [id]);
+    }, [floraId]);
 
     if (loading) {
         return <p>Loading...</p>;

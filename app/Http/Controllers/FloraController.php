@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Flora;
+use Inertia\Inertia;
+
+
 
 class FloraController extends Controller
 {
+
+    
     public function show_all_flora()
     {
             $flora = Flora::all();
