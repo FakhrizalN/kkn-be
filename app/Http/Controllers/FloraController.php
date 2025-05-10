@@ -22,8 +22,8 @@ class FloraController extends Controller
             ]);
     }
 
-    public function get_one_flora(Request $request, $id) {
-        $flora = Flora::where('id', $id)->first();
+    public function get_one_flora(Request $request, $slug) {
+        $flora = Flora::where('slug', $slug)->first();
 
         if (!$flora) {
             return response()->json([

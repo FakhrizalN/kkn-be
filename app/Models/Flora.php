@@ -17,5 +17,10 @@ class Flora extends Model
         'distribusi',
         'foto',
     ];
+    public function setLatinNameAttribute($value)
+    {
+        $this->attributes['latin_name'] = $value;
+        $this->attributes['slug'] = Str::slug($value, '-');
+    }
     public $timestamps = false;
 }

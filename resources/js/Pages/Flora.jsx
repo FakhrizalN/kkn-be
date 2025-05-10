@@ -1,5 +1,6 @@
+import { Link } from "@inertiajs/react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Flora = () => {
     const [floraList, setFloraList] = useState([]);
@@ -10,7 +11,7 @@ const Flora = () => {
             try {
                 const response = await axios.get("/api/flora/");
                 console.log("Response data:", response.data);
-                setFloraList(response.data.data); // Akses array di dalam properti "data"
+                setFloraList(response.data.data);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching flora data:", error);
@@ -45,12 +46,20 @@ const Flora = () => {
                             backgroundColor: "#f9f9f9",
                         }}
                     >
-                        <strong style={{ fontSize: "18px", color: "#333" }}>
-                            {flora.local_name}
-                        </strong>
-                        <p style={{ margin: "5px 0", fontStyle: "italic", color: "#555" }}>
-                            {flora.latin_name}
-                        </p>
+                        <Link
+                            href={`/flora/${flora.slug}`}
+                            style={{
+                                textDecoration: "none",
+                                color: "inherit",
+                            }}
+                        >
+                            <strong style={{ fontSize: "18px", color: "#333" }}>
+                                {flora.local_name}
+                            </strong>
+                            <p style={{ margin: "5px 0", fontStyle: "italic", color: "#555" }}>
+                                {flora.latin_name}
+                            </p>
+                        </Link>
                     </li>
                 ))}
             </ul>

@@ -11,11 +11,8 @@ Route::get('/flora', function () {
     return Inertia::render('Flora');
 });
 
-// Route::get('/flora/17', function () {
-//     return Inertia::render('FloraDetail');
-// });
-Route::get('/flora/{id}', function ($id) {
+Route::get('/flora/{slug}', function ($slug) {
     return Inertia::render('FloraDetail', [
-        'floraId' => $id,
+        'floraSlug' => $slug,
     ]);
 })->name('flora.detail');
