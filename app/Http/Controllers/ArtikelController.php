@@ -18,8 +18,8 @@ class ArtikelController extends Controller
             ]);
     }
 
-    public function get_one_artikel(Request $request, $id) {
-        $artikels = Artikels::where('id', $id)->first();
+    public function get_one_artikel(Request $request, $slug) {
+        $artikels = Artikels::where('slug', $slug)->first();
 
         if (!$artikels) {
             return response()->json([
