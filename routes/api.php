@@ -14,7 +14,7 @@ use App\Http\Controllers\ArtikelController;
 
 Route::prefix('fauna')->group(function (){
     Route::get('/', [FaunaController::class, 'show_all_fauna'])->name('fauna.all');
-    Route::get('/{id}', [FaunaController::class, 'get_one_fauna'])->name('fauna.single');
+    Route::get('/{slug}', [FaunaController::class, 'get_one_fauna'])->name('fauna.single');
     // Route::delete('/{id}', [FaunaController::class, 'delete_fauna'])->name('fauna.delete')->middleware('auth:sanctum');
     // Route::post('/', [FaunaController::class, 'create_fauna'])->name('fauna.create')->middleware('auth:sanctum');
     // Route::put('/{id}', [FaunaController::class, 'update_fauna'])->name('fauna.update')->middleware('auth:sanctum');
@@ -30,7 +30,7 @@ Route::prefix('flora')->group(function (){
 
 Route::prefix('artikel')->group(function (){
     Route::get('/', [ArtikelController::class, 'show_all_artikel'])->name('artikel.all');
-    Route::get('/{id}', [ArtikelController::class, 'get_one_artikel'])->name('artikel.single');
+    Route::get('/{slug}', [ArtikelController::class, 'get_one_artikel'])->name('artikel.single');
     // Route::delete('/{id}', [ArtikelController::class, 'delete_artikel'])->name('artikel.delete')->middleware('auth:sanctum');
     // Route::post('/', [ArtikelController::class, 'create_artikel'])->name('artikel.create')->middleware('auth:sanctum');
     // Route::put('/{id}', [ArtikelController::class, 'update_artikel'])->name('artikel.update')->middleware('auth:sanctum');

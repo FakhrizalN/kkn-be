@@ -12,6 +12,7 @@ class Fauna extends Model
     
     protected $fillable = [
         'nama',
+        'slug',
         'nama_latin',
         'nama_family',
         'deskripsi',
@@ -20,5 +21,10 @@ class Fauna extends Model
         'foto',
     ];
     public $timestamps = false;
+    public function setNamaAttribute($value)
+    {
+        $this->attributes['nama'] = $value;
+        $this->attributes['slug'] = Str::slug($value, '-'); // Membuat slug dari nama
+    }
 
 }
