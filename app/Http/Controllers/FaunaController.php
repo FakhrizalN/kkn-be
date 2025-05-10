@@ -17,8 +17,8 @@ class FaunaController extends Controller
             ]);
     }
 
-    public function get_one_fauna(Request $request, $id) {
-        $fauna = Fauna::where('id', $id)->first();
+    public function get_one_fauna(Request $request, $slug) {
+        $fauna = Fauna::where('slug', $slug)->first();
 
         if (!$fauna) {
             return response()->json([
