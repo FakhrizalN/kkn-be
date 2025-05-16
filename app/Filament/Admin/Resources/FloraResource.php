@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\FileUpload;
 
 class FloraResource extends Resource
 {
@@ -41,6 +42,11 @@ class FloraResource extends Resource
                 Forms\Components\Textarea::make('distribusi')
                     ->required()
                     ->maxLength(65535),
+                Forms\Components\FileUpload::make('foto')
+                    ->required()
+                    ->image()
+                    ->disk('public')
+                    ->columnSpanFull(),
 
             ]);
     }
@@ -64,6 +70,8 @@ class FloraResource extends Resource
                     ->limit(100),
                 Tables\Columns\TextColumn::make('distribusi')
                     ->limit(100),
+                Tables\Columns\ImageColumn::make('image')
+                    ->height(50),
             ])
             ->filters([
                 //
