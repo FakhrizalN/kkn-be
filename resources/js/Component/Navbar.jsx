@@ -1,9 +1,30 @@
 import { Link, usePage } from "@inertiajs/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const { url } = usePage();
+    const dropdownRef = useRef(null);
+
+    // Tutup dropdown jika klik di luar
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target)
+            ) {
+                setIsDropdownOpen(false);
+            }
+        }
+        if (isDropdownOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isDropdownOpen]);
 
     // Helper untuk menentukan apakah link aktif
     const isActive = (href) => {
@@ -29,7 +50,7 @@ export default function Navbar() {
                     <Link href="/" className={navLinkClass("/")}>
                         Beranda
                     </Link>
-                    <div className="relative">
+                    <div className="relative" ref={dropdownRef}>
                         <button
                             type="button"
                             className={navLinkClass("/hayati")}
