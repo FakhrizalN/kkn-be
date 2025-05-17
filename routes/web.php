@@ -36,3 +36,11 @@ Route::get('/artikel/{slug}', function ($slug) {
         'artikelSlug' => $slug,
     ]);
 })->name('artikel.detail');
+
+Route::get('/layanan', function () {
+    return Inertia::render('Layanan');
+});
+
+Route::get('/tentang', function () {
+    return Inertia::render('Tentang');
+});
