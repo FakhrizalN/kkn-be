@@ -12,7 +12,22 @@ export default function Footer() {
                         Bersama kita jaga bumi, nikmati keindahan alam, dan ciptakan warisan lestari untuk generasi mendatang.
                     </div>
                 </div>
-
+                {/* <div className="w-[1120px] flex flex-col justify-start items-center gap-10">
+                    <div className="w-[792px] flex justify-start items-start gap-[29px]">
+                        <Link href="/" className="flex-1 px-4 py-2.5 rounded-lg flex justify-center items-center gap-1.5 overflow-hidden">
+                            <div className="text-[#cbea7b] text-base font-semibold font-jakarta leading-normal">Beranda</div>
+                        </Link>
+                        <Link href="/hayati" className="flex-1 px-3.5 py-2.5 rounded-lg flex justify-center items-center gap-1 overflow-hidden">
+                            <div className="text-white text-sm font-semibold font-jakarta leading-tight">Hayati</div>
+                        </Link>
+                        <Link href="/layanan" className="flex-1 px-3.5 py-2.5 rounded-lg flex justify-center items-center gap-1 overflow-hidden">
+                            <div className="text-white text-sm font-semibold font-jakarta leading-tight">Layanan pemandu</div>
+                        </Link>
+                        <Link href="/tentang" className="flex-1 px-3.5 py-2.5 rounded-lg flex justify-center items-center gap-1 overflow-hidden">
+                            <div className="text-white text-sm font-semibold font-jakarta leading-tight">Tentang Kami</div>
+                        </Link>
+                    </div>
+                </div> */}
                 {/* Copyright & kontak */}
                 <div className="w-[1120px] py-7 border-t border-[#d6d6d6] flex justify-between items-center">
                     <div className="flex items-center gap-2.5">
