@@ -44,3 +44,10 @@ Route::get('/layanan', function () {
 Route::get('/tentang', function () {
     return Inertia::render('Tentang');
 });
+
+Route::get('/form', function () {
+    return Inertia::render('Form');
+});
+
+// Route::inertia('/layanan', 'Layanan');
+// Route::inertia('/form', 'Form');
