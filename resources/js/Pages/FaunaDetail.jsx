@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Footer from "../Component/Footer";
+import Navbar from "../Component/Navbar";
 
 const FaunaDetail = ({ faunaSlug }) => {
     const [fauna, setFauna] = useState(null);
@@ -9,59 +11,101 @@ const FaunaDetail = ({ faunaSlug }) => {
         const fetchFaunaDetail = async () => {
             try {
                 const response = await axios.get(`/api/fauna/${faunaSlug}`);
-                console.log("Fauna Detail Response:", response.data);
                 setFauna(response.data.data);
                 setLoading(false);
             } catch (error) {
-                console.error("Error fetching fauna detail:", error);
                 setLoading(false);
             }
         };
-
         fetchFaunaDetail();
     }, [faunaSlug]);
 
     if (loading) {
-        return <p style={{ textAlign: "center", fontSize: "18px" }}>Loading...</p>;
+        return (
+            <div className="w-full flex justify-center items-center py-20">
+                <span className="text-lg text-[#0c0c0c] font-jakarta">Loading...</span>
+            </div>
+        );
     }
 
     if (!fauna) {
-        return <p style={{ textAlign: "center", color: "red" }}>Fauna not found.</p>;
+        return (
+            <div className="w-full flex justify-center items-center py-20">
+                <span className="text-lg text-red-500 font-jakarta">Fauna not found.</span>
+            </div>
+        );
     }
 
     return (
-        <div style={{ padding: "20px", fontFamily: "Arial, sans-serif", maxWidth: "800px", margin: "0 auto" }}>
-            <h1 style={{ textAlign: "center", color: "#4CAF50", marginBottom: "20px" }}>
-                {fauna.nama}
-            </h1>
-            <img
-                src={fauna.foto}
-                alt={fauna.nama}
-                style={{
-                    width: "100%",
-                    maxHeight: "400px",
-                    objectFit: "cover",
-                    borderRadius: "8px",
-                    marginBottom: "20px",
-                }}
-            />
-            <h3 style={{ textAlign: "center", fontStyle: "italic", color: "#555" }}>
-                {fauna.nama_latin}
-            </h3>
-            <div style={{ marginTop: "20px", lineHeight: "1.6", color: "#333" }}>
-                <p style={{ marginBottom: "10px" }}>
-                    <strong>Description:</strong> {fauna.deskripsi}
-                </p>
-                <p style={{ marginBottom: "10px" }}>
-                    <strong>Family:</strong> {fauna.nama_family}
-                </p>
-                <p style={{ marginBottom: "10px" }}>
-                    <strong>Berat:</strong> {fauna.berat ? `${fauna.berat} kg` : "N/A"}
-                </p>
-                <p style={{ marginBottom: "10px" }}>
-                    <strong>Panjang:</strong> {fauna.panjang ? `${fauna.panjang} cm` : "N/A"}
-                </p>
+        <div className="w-full flex flex-col justify-center items-center bg-white font-jakarta">
+            <Navbar />
+            {/* Detail Fauna */}
+            <div className="w-full bg-white flex flex-col justify-center items-center">
+                <div className="self-stretch px-[15px] py-[100px] bg-white flex flex-col justify-center items-center gap-[50px]">
+                    <div className="w-[1120px] pb-8 border-b border-[#d6d6d6] flex flex-col justify-center items-start gap-3">
+                        <div className="w-full flex justify-between items-end gap-5">
+                            <div className="text-[#0c0c0c] text-5xl font-medium leading-[60px]">
+                                {fauna.nama}
+                            </div>
+                            <div className="text-[#0c0c0c] text-2xl font-medium leading-9 italic">
+                                {fauna.nama_latin}
+                            </div>
+                        </div>
+                        <div className="w-[707px] text-[#7f7f7f] text-base font-normal leading-normal mt-4">
+                            {fauna.deskripsi}
+                        </div>
+                    </div>
+                    <div className="flex justify-center items-center gap-8">
+                        {/* Kategori */}
+                        <div className="w-[352px] px-5 py-10 bg-[#f9f9fb] rounded-[20px] flex flex-col justify-start items-start gap-4">
+                            <div className="flex flex-col justify-start items-start gap-1">
+                                <div className="text-[#547417] text-4xl font-medium leading-[44px]">Kategori</div>
+                                <div className="text-[#0c0c0c] text-2xl font-medium leading-loose">{fauna.kategori || "Tidak diketahui"}</div>
+                            </div>
+                            <div className="text-[#7f7f7f] text-base font-normal leading-normal">
+                                {fauna.nama_family ? `Family: ${fauna.nama_family}` : "Family tidak tersedia"}
+                            </div>
+                        </div>
+                        {/* Berat */}
+                        <div className="w-[352px] px-5 py-10 bg-[#f9f9fb] rounded-[20px] flex flex-col justify-start items-start gap-4">
+                            <div className="flex flex-col justify-start items-start gap-1">
+                                <div className="text-[#547417] text-4xl font-medium leading-[44px]">Berat</div>
+                                <div className="text-[#0c0c0c] text-2xl font-medium leading-loose">{fauna.berat ? `${fauna.berat} Kg` : "N/A"}</div>
+                            </div>
+                            <div className="text-[#7f7f7f] text-base font-normal leading-normal">
+                                Berat rata-rata fauna dewasa.
+                            </div>
+                        </div>
+                        {/* Panjang */}
+                        <div className="w-[352px] px-5 py-10 bg-[#f9f9fb] rounded-[20px] flex flex-col justify-start items-start gap-4">
+                            <div className="flex flex-col justify-start items-start gap-1">
+                                <div className="text-[#547417] text-4xl font-medium leading-[44px]">Panjang</div>
+                                <div className="text-[#0c0c0c] text-2xl font-medium leading-loose">{fauna.panjang ? `${fauna.panjang} Cm` : "N/A"}</div>
+                            </div>
+                            <div className="text-[#7f7f7f] text-base font-normal leading-normal">
+                                Panjang tubuh dari kepala hingga ekor.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            {/* Gallery */}
+            <div className="w-full flex flex-col justify-center items-center">
+                <div className="self-stretch px-[15px] py-[100px] bg-white flex flex-col justify-center items-center gap-[50px]">
+                    <div className="w-[1120px] flex flex-col justify-center items-center gap-1">
+                        <div className="self-stretch text-center text-[#0c0c0c] text-5xl font-medium leading-[60px]">
+                            Gallery
+                        </div>
+                    </div>
+                    <div className="w-[1120px] flex justify-center items-center gap-8">
+                        <img className="w-[352px] h-[400px] rounded-[20px] object-cover" src={fauna.foto || "https://placehold.co/352x400"} alt={fauna.nama} />
+                        <img className="w-[352px] h-[400px] rounded-[20px] object-cover" src="https://placehold.co/352x400?text=Gallery+2" alt="Gallery 2" />
+                        <img className="w-[352px] h-[400px] rounded-[20px] object-cover" src="https://placehold.co/352x400?text=Gallery+3" alt="Gallery 3" />
+                    </div>
+                </div>
+            </div>
+            <Footer />
         </div>
     );
 };

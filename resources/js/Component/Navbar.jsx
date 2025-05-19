@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { url } = usePage();
     const dropdownRef = useRef(null);
 
@@ -44,9 +45,24 @@ export default function Navbar() {
     };
 
     return (
-        <div className="w-full h-[100px] bg-[#1d2b08] flex flex-col justify-center items-center">
-            <div className="w-full px-[15px] py-8 bg-[#1d2b08] flex justify-center items-center">
-                <div className="flex justify-center items-center">
+        <div className="w-full bg-[#1d2b08] flex flex-col justify-center items-center">
+            <div className="w-full max-w-[1120px] px-[15px] py-6 flex justify-between items-center">
+                {/* Logo or Brand */}
+                <Link href="/" className="text-[#cbea7b] text-xl font-bold font-jakarta">
+                    Sungai Wain
+                </Link>
+                {/* Hamburger for mobile */}
+                <button
+                    className="lg:hidden text-[#cbea7b] focus:outline-none"
+                    onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                    aria-label="Toggle menu"
+                >
+                    <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+                        <path stroke="#cbea7b" strokeWidth="2" strokeLinecap="round" d="M4 7h16M4 12h16M4 17h16" />
+                    </svg>
+                </button>
+                {/* Desktop Menu */}
+                <div className="hidden lg:flex justify-center items-center gap-2">
                     <Link href="/" className={navLinkClass("/")}>
                         Beranda
                     </Link>
@@ -87,6 +103,63 @@ export default function Navbar() {
                     </Link>
                 </div>
             </div>
+            {/* Mobile Menu */}
+            {isMobileMenuOpen && (
+                <div className="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#1d2b08] shadow-lg z-50 flex flex-col items-start pt-20 px-6 gap-2 animate-slide-in">
+                    <button
+                        className="absolute top-4 right-4 text-[#cbea7b] text-2xl"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        aria-label="Close menu"
+                    >
+                        &times;
+                    </button>
+                    <Link href="/" className={navLinkClass("/")} onClick={() => setIsMobileMenuOpen(false)}>
+                        Beranda
+                    </Link>
+                    {/* Dropdown Hayati di mobile: tampil di bawah tombol Hayati, tidak menutupi menu lain */}
+                    <div className="w-full flex flex-col items-start" ref={dropdownRef}>
+                        <button
+                            type="button"
+                            className={navLinkClass("/hayati")}
+                            onClick={() => setIsDropdownOpen((prev) => !prev)}
+                        >
+                            Hayati
+                        </button>
+                        {isDropdownOpen && (
+                            <div className="w-full flex flex-col bg-white rounded shadow-lg z-50 mt-1">
+                                <Link
+                                    href="/fauna"
+                                    className="block w-full text-left px-3 py-2 font-jakarta text-sm font-semibold leading-tight text-[#1d2b08] hover:text-[#cbea7b] hover:bg-[#1d2b08] transition"
+                                    onClick={() => {
+                                        setIsDropdownOpen(false);
+                                        setIsMobileMenuOpen(false);
+                                    }}
+                                    tabIndex={0}
+                                >
+                                    Fauna
+                                </Link>
+                                <Link
+                                    href="/flora"
+                                    className="block w-full text-left px-3 py-2 font-jakarta text-sm font-semibold leading-tight text-[#1d2b08] hover:text-[#cbea7b] hover:bg-[#1d2b08] rounded-b-md transition"
+                                    onClick={() => {
+                                        setIsDropdownOpen(false);
+                                        setIsMobileMenuOpen(false);
+                                    }}
+                                    tabIndex={0}
+                                >
+                                    Flora
+                                </Link>
+                            </div>
+                        )}
+                    </div>
+                    <Link href="/layanan" className={navLinkClass("/layanan")} onClick={() => setIsMobileMenuOpen(false)}>
+                        Layanan Pemandu
+                    </Link>
+                    <Link href="/tentang" className={navLinkClass("/tentang")} onClick={() => setIsMobileMenuOpen(false)}>
+                        Tentang Kami
+                    </Link>
+                </div>
+            )}
         </div>
     );
 }
