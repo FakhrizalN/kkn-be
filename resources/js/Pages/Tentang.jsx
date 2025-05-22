@@ -146,27 +146,43 @@ const Tentang = () => {
                 </div>
                 <div className="flex gap-3.5">
                   {/* WhatsApp */}
-                  <span className="px-3 py-2.5 bg-white rounded-full outline-1 outline-[#8FBF23] flex items-center">
+                  <a
+                    href="https://wa.me/628115382227"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-2.5 bg-white rounded-full outline-1 outline-[#8FBF23] flex items-center hover:bg-lime-50 transition"
+                    aria-label="WhatsApp"
+                  >
                     <svg className="w-5 h-5" viewBox="0 0 32 32" fill="none">
                       <path d="M16 3C9.373 3 4 8.373 4 15c0 2.637.86 5.08 2.34 7.09L4 29l7.18-2.31A12.93 12.93 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3Z" stroke="#8FBF23" strokeWidth="2" fill="none"/>
                       <path d="M11.5 13.5c.5 2 2.5 4.5 4.5 5.5l1.5-1.5c.5-.5 1.5 0 2 .5l1 1c.5.5.5 1.5 0 2A7.5 7.5 0 0 1 16 22.5C11.5 20.5 9 16.5 9 13c0-.5.5-1.5 1-2l1-1c.5-.5 1.5-.5 2 0l1.5 1.5c.5.5 1 1.5.5 2l-1.5 1.5Z" stroke="#8FBF23" strokeWidth="2" fill="none"/>
                     </svg>
-                  </span>
+                  </a>
                   {/* Instagram */}
-                  <span className="px-3 py-2.5 bg-white rounded-full outline-1 outline-[#8FBF23] flex items-center">
+                  <a
+                    href="https://instagram.com/sungaiwain96"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-2.5 bg-white rounded-full outline-1 outline-[#8FBF23] flex items-center hover:bg-lime-50 transition"
+                    aria-label="Instagram"
+                  >
                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
                       <rect x="3" y="3" width="18" height="18" rx="5" stroke="#8FBF23" strokeWidth="2" fill="none"/>
                       <circle cx="12" cy="12" r="4" stroke="#8FBF23" strokeWidth="2" fill="none"/>
                       <circle cx="17" cy="7" r="1" fill="#8FBF23"/>
                     </svg>
-                  </span>
+                  </a>
                   {/* Email */}
-                  <span className="px-3 py-2.5 bg-white rounded-full outline-1 outline-[#8FBF23] flex items-center">
+                  <a
+                    href="mailto:sungaiwain96@gmail.com"
+                    className="px-3 py-2.5 bg-white rounded-full outline-1 outline-[#8FBF23] flex items-center hover:bg-lime-50 transition"
+                    aria-label="Email"
+                  >
                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
                       <rect x="3" y="5" width="18" height="14" rx="2" stroke="#8FBF23" strokeWidth="2" fill="none"/>
                       <path d="M3 7l9 6 9-6" stroke="#8FBF23" strokeWidth="2" fill="none"/>
                     </svg>
-                  </span>
+                  </a>
                 </div>
               </div>
             </div>
