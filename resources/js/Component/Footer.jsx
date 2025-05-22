@@ -36,7 +36,7 @@ export default function Footer() {
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#fcfcfc" strokeWidth="1.5"/><path d="M6 7C6.5 8.5 8 10 9.5 10.5M9.5 10.5L12 12M9.5 10.5V13" stroke="#fcfcfc" strokeWidth="1.5" strokeLinecap="round"/></svg>
                             </div>
                             <div className="text-[#fcfcfc] text-sm sm:text-base font-normal font-jakarta leading-normal">
-                                +1234-456-7890
+                                +62 811 538 2227
                             </div>
                         </div>
                     </div>

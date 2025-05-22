@@ -154,14 +154,9 @@ const Flora = () => {
                                         <div className="flex justify-between items-center w-full">
                                             <div className="flex justify-start items-center gap-2.5">
                                                 <div className="italic text-[#7f7f7f] text-base font-normal font-jakarta leading-normal truncate max-w-[180px]">
-                                                    {flora.latin_name.length > 17
-                                                        ? flora.latin_name.slice(0, 17) + "..."
+                                                    {flora.latin_name.length > 20
+                                                        ? flora.latin_name.slice(0, 20) + "..."
                                                         : flora.latin_name}
-                                                </div>
-                                            </div>
-                                            <div className="px-2.5 py-[5px] bg-[#cbea7b] rounded-[7px] flex justify-center items-center gap-2.5">
-                                                <div className="text-[#1d2b08] text-sm font-normal font-jakarta leading-tight">
-                                                    {flora.kategori || "Lainnya"}
                                                 </div>
                                             </div>
                                         </div>

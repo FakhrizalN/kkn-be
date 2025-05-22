@@ -1,8 +1,8 @@
+import { Link } from "@inertiajs/react";
 import { useState } from "react";
+import { FiMinus, FiPhone, FiPlus } from "react-icons/fi";
 import Footer from "../Component/Footer";
 import Navbar from "../Component/Navbar";
-import { FiPlus, FiMinus, FiPhone } from "react-icons/fi";
-import { Link } from "@inertiajs/react";
 
 const layananList = [
   {
@@ -96,7 +96,6 @@ const Layanan = () => {
       <div className="w-full flex flex-col items-center pt-36 pb-12 bg-white">
         <div className="w-[1120px] flex flex-col items-center gap-5">
           <div className="flex flex-col items-center gap-1 w-full">
-            <div className="text-center text-lime-700 text-sm font-medium">Pricing Table</div>
             <div className="text-center text-stone-950 text-5xl font-medium leading-[60px]">Pilihan Tingkat Layanan Kami</div>
           </div>
           <div className="w-[742px] text-center text-zinc-500 text-base font-normal">
@@ -108,7 +107,7 @@ const Layanan = () => {
           {layananList.slice(0, 3).map((item, idx) => (
             <div
               key={idx}
-              className="w-72 p-7 bg-white rounded-[20px] outline outline-1 outline-offset-[-1px] outline-zinc-300 flex flex-col items-center gap-5"
+              className="w-72 p-7 bg-white rounded-[20px] outline-1 outline-offset-[-1px] outline-zinc-300 flex flex-col items-center gap-5"
             >
               <div className="text-center text-stone-950 text-2xl font-medium leading-loose">{item.title}</div>
               <div className="flex items-start gap-[5px]">
@@ -121,8 +120,8 @@ const Layanan = () => {
                 <div className="text-center text-stone-950 text-base font-normal">{item.desc}</div>
               </div>
               <Link
-                href="/form"
-                className="w-full px-4 py-3 bg-lime-300 rounded-lg shadow outline outline-1 outline-lime-300 text-stone-950 text-base font-semibold mt-2 flex justify-center items-center"
+                href={`/form?paket=${encodeURIComponent(item.title)}`}
+                className="w-full px-4 py-3 bg-[#cbea7b] rounded-lg shadow outline-1 outline-lime-300 text-stone-950 text-base font-semibold mt-2 flex justify-center items-center"
               >
                 Pesan Sekarang
               </Link>
@@ -133,7 +132,7 @@ const Layanan = () => {
           {layananList.slice(3, 6).map((item, idx) => (
             <div
               key={idx}
-              className="w-72 p-7 bg-white rounded-[20px] outline outline-1 outline-offset-[-1px] outline-zinc-300 flex flex-col items-center gap-5"
+              className="w-72 p-7 bg-white rounded-[20px] outline-1 outline-offset-[-1px] outline-zinc-300 flex flex-col items-center gap-5"
             >
               <div className="text-center text-stone-950 text-2xl font-medium leading-loose">{item.title}</div>
               <div className="flex items-start gap-[5px]">
@@ -141,13 +140,13 @@ const Layanan = () => {
                 <div className="text-stone-950 text-5xl font-medium leading-[60px]">{item.price}</div>
               </div>
               <div className="self-stretch h-0 border-t border-zinc-300"></div>
-              <div className="flex flex-col items-center gap-2.5">
+              <div className="flex flex-col h-full items-center gap-2.5">
                 <div className="text-center text-stone-950 text-xl font-normal leading-loose">{item.max}</div>
                 <div className="text-center text-stone-950 text-base font-normal">{item.desc}</div>
               </div>
               <Link
-                href="/form"
-                className="w-full px-4 py-3 bg-lime-300 rounded-lg shadow outline outline-1 outline-lime-300 text-stone-950 text-base font-semibold mt-2 flex justify-center items-center"
+                href={`/form?paket=${encodeURIComponent(item.title)}`}
+                className="w-full px-4 py-3 bg-[#cbea7b] rounded-lg shadow outline-1 outline-lime-300 text-stone-950 text-base font-semibold mt-2 flex justify-center items-center"
               >
                 Pesan Sekarang
               </Link>
@@ -162,19 +161,18 @@ const Layanan = () => {
           {/* Left */}
           <div className="w-[473px] flex flex-col gap-10">
             <div className="flex flex-col gap-1">
-              <div className="text-lime-600 text-sm font-medium">FAQ’s</div>
               <div className="text-stone-950 text-5xl font-medium leading-[60px]">Temukan Pertanyaanmu Disini</div>
             </div>
             <div className="flex flex-col gap-2">
               <div className="text-zinc-500 text-xl font-medium">Tidak Menemukan Pertanyaan mu?</div>
               <div className="flex gap-1.5">
                 <div className="text-zinc-500 text-xl font-medium">Kirim Pesan ke</div>
-                <div className="text-stone-950 text-xl font-medium">Starium@drak.sistem</div>
+                <div className="text-stone-950 text-xl font-medium">sungaiwain96@gmail.com</div>
               </div>
             </div>
-            <button className="flex items-center gap-2 px-3.5 py-2.5 bg-lime-300 rounded-lg shadow outline outline-1 outline-lime-300 w-fit">
+            <button className="flex items-center gap-2 px-3.5 py-2.5 bg-[#cbea7b] rounded-lg shadow outline-1 outline-lime-300 w-fit">
               <FiPhone className="w-5 h-5" />
-              <span className="text-stone-950 text-sm font-semibold">Call +62(89-9824-1808)</span>
+              <span className="text-stone-950 text-sm font-semibold">Call +6289-9824-1808</span>
             </button>
           </div>
           {/* Right */}
