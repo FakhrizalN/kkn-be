@@ -19,7 +19,7 @@ class FloraResource extends Resource
 {
     protected static ?string $model = Flora::class;
 
-    protected static ?string $navigationIcon = 'icon-eco';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {

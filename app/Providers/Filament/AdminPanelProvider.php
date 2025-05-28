@@ -24,7 +24,6 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->id('admin')
-            ->viteTheme('resources/css/app.css')
             ->path('admin')
             ->login()
             ->colors([

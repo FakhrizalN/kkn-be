@@ -19,7 +19,7 @@ class FaunaResource extends Resource
 {
     protected static ?string $model = Fauna::class;
 
-    protected static ?string $navigationIcon = 'icon-pets';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
