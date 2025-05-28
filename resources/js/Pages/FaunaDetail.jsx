@@ -42,18 +42,19 @@ const FaunaDetail = ({ faunaSlug }) => {
             {/* Detail Fauna */}
             <div className="w-full bg-white flex flex-col justify-center items-center">
                 <div className="self-stretch px-[15px] py-[100px] bg-white flex flex-col justify-center items-center gap-[50px]">
-                    <div className="w-[1120px] pb-8 border-b border-[#d6d6d6] flex flex-col justify-center items-start gap-3">
-                        <div className="w-full flex justify-between items-end gap-5">
+                    <div className="w-[1120px] pb-8 border-b border-[#d6d6d6] flex flex-row justify-center items-start gap-3">
+                        <div className="w-full flex flex-col justify-between items-start gap-5">
                             <div className="text-[#0c0c0c] text-5xl font-medium leading-[60px]">
                                 {fauna.nama}
                             </div>
                             <div className="text-[#0c0c0c] text-2xl font-medium leading-9 italic">
                                 {fauna.nama_latin}
                             </div>
+                            <div className="w-[707px] text-[#7f7f7f] text-base font-normal leading-normal mt-4">
+                                {fauna.deskripsi}
+                            </div>
                         </div>
-                        <div className="w-[707px] text-[#7f7f7f] text-base font-normal leading-normal mt-4">
-                            {fauna.deskripsi}
-                        </div>
+                        <img className="w-[352px] h-[400px] rounded-[20px] object-cover" src={fauna.foto || "https://placehold.co/352x400"} alt={fauna.nama} />
                     </div>
                     <div className="flex justify-center items-center gap-8">
                         {/* Kategori */}
@@ -90,7 +91,7 @@ const FaunaDetail = ({ faunaSlug }) => {
                 </div>
             </div>
 
-            {/* Gallery */}
+            {/* Gallery
             <div className="w-full flex flex-col justify-center items-center">
                 <div className="self-stretch px-[15px] py-[100px] bg-white flex flex-col justify-center items-center gap-[50px]">
                     <div className="w-[1120px] flex flex-col justify-center items-center gap-1">
@@ -104,7 +105,7 @@ const FaunaDetail = ({ faunaSlug }) => {
                         <img className="w-[352px] h-[400px] rounded-[20px] object-cover" src="https://placehold.co/352x400?text=Gallery+3" alt="Gallery 3" />
                     </div>
                 </div>
-            </div>
+            </div> */}
             <Footer />
         </div>
     );

@@ -13,7 +13,9 @@ const kategoriList = [
     "Lainnya"
 ];
 
-const ITEMS_PER_PAGE = 9;
+// Define items per page for different views
+const MOBILE_ITEMS_PER_PAGE = 8; // Max 8 for mobile
+const DESKTOP_ITEMS_PER_PAGE = 9; // Default 9 for larger screens
 
 // Fungsi untuk pagination dengan ellipsis
 function getPagination(current, total) {
@@ -43,7 +45,10 @@ const Fauna = () => {
     const [selectedKategori, setSelectedKategori] = useState(null);
     const [search, setSearch] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
+    // State to track if it's a mobile view
+    const [isMobile, setIsMobile] = useState(false);
 
+    // Effect to fetch fauna data
     useEffect(() => {
         const fetchFauna = async () => {
             try {
@@ -58,6 +63,27 @@ const Fauna = () => {
         fetchFauna();
     }, []);
 
+    // Effect to detect screen size for responsive items per page
+    useEffect(() => {
+        const checkIsMobile = () => {
+            // Tailwind's 'md' breakpoint is 768px by default.
+            // Using 768px as the threshold for mobile/desktop view logic.
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        // Initial check
+        checkIsMobile();
+
+        // Add event listener for window resize
+        window.addEventListener('resize', checkIsMobile);
+
+        // Cleanup the event listener on component unmount
+        return () => window.removeEventListener('resize', checkIsMobile);
+    }, []); // Empty dependency array means this runs once on mount and cleans up on unmount
+
+    // Determine current ITEMS_PER_PAGE based on screen size
+    const currentItemsPerPage = isMobile ? MOBILE_ITEMS_PER_PAGE : DESKTOP_ITEMS_PER_PAGE;
+
     // Filter fauna berdasarkan kategori dan pencarian
     const filteredFauna = faunaList.filter((fauna) => {
         const matchKategori = selectedKategori ? fauna.kategori === selectedKategori : true;
@@ -67,33 +93,35 @@ const Fauna = () => {
         return matchKategori && matchSearch;
     });
 
-    // Pagination logic
-    const totalPages = Math.ceil(filteredFauna.length / ITEMS_PER_PAGE);
-    const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
-    const endIdx = startIdx + ITEMS_PER_PAGE;
+    // Pagination logic uses currentItemsPerPage
+    const totalPages = Math.ceil(filteredFauna.length / currentItemsPerPage);
+    const startIdx = (currentPage - 1) * currentItemsPerPage;
+    const endIdx = startIdx + currentItemsPerPage;
     const faunaToShow = filteredFauna.slice(startIdx, endIdx);
 
-    // Reset ke halaman 1 jika filter berubah
+    // Reset ke halaman 1 jika filter atau screen size berubah
     useEffect(() => {
         setCurrentPage(1);
-    }, [selectedKategori, search]);
+    }, [selectedKategori, search, isMobile]); // Added isMobile to dependencies
 
     return (
         <div className="w-full bg-white min-h-screen flex flex-col justify-center items-center">
             <Navbar />
-            <div className="self-stretch px-[15px] py-[100px] bg-white flex flex-col justify-start items-center gap-[50px]">
+            <div className="self-stretch px-[15px] py-[100px] bg-white flex flex-col justify-start items-center gap-[50px] md:px-4 md:py-12">
                 {/* Header */}
-                <div className="w-[1120px] pb-[50px] border-b border-[#d6d6d6] flex justify-between items-center">
-                    <div className="w-[456px] text-[#0c0c0c] text-5xl font-medium font-jakarta leading-[60px]">
+                <div className="w-full max-w-[1120px] pb-[50px] border-b border-[#d6d6d6] flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left md:pb-8">
+                    {/* Adjusted header text size for mobile */}
+                    <div className="w-full text-[#0c0c0c] text-3xl font-medium font-jakarta leading-[40px] sm:text-4xl sm:leading-[48px] md:text-5xl md:leading-[60px] md:w-[456px]">
                         Daftar Fauna
                     </div>
-                    <div className="w-[451px] text-[#7f7f7f] text-base font-normal font-jakarta leading-normal">
+                    {/* Adjusted description text size for mobile */}
+                    <div className="w-full text-[#7f7f7f] text-sm font-normal font-jakarta leading-normal sm:text-base md:w-[451px]">
                         Temukan beragam satwa liar yang hidup di Hutan Lindung Sungai Wain, dari primata langka hingga burung endemik Kalimantan
                     </div>
                 </div>
-                <div className="w-[1120px] flex justify-between items-start">
+                <div className="w-full max-w-[1120px] flex flex-col items-start gap-8 md:flex-row md:justify-between">
                     {/* Sidebar */}
-                    <div className="w-[235px] min-h-[846px] flex flex-col justify-start items-start gap-10">
+                    <div className="w-full md:w-[235px] min-h-[auto] flex flex-col justify-start items-start gap-10">
                         {/* Search */}
                         <div className="self-stretch px-3 py-2.5 rounded-lg outline-1 outline-offset-[-1px] outline-[#d6d6d6] flex justify-start items-center gap-2.5">
                             <input
@@ -106,18 +134,21 @@ const Fauna = () => {
                         </div>
                         {/* Kategori */}
                         <div className="flex flex-col justify-start items-start gap-5 w-full">
-                            <div className="text-[#0c0c0c] text-2xl font-medium font-jakarta leading-loose">
+                            {/* Adjusted category header text size for mobile */}
+                            <div className="text-[#0c0c0c] text-xl font-medium font-jakarta leading-loose sm:text-2xl">
                                 Kategori
                             </div>
-                            <div className="flex flex-col justify-start items-start gap-4 w-full">
+                            {/* NEW: Using grid for mobile categories, and then md:flex-col for desktop */}
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-2 w-full md:flex md:flex-col md:items-start md:gap-4">
                                 {kategoriList.map((kategori) => (
                                     <button
                                         key={kategori}
-                                        className={`flex items-center gap-3.5 w-full group`}
+                                        className={`flex items-center gap-3.5 group`}
                                         onClick={() => setSelectedKategori(selectedKategori === kategori ? null : kategori)}
                                     >
                                         <div className={`w-[18px] h-[18px] rounded-[20px] border ${selectedKategori === kategori ? "border-[5px] border-[#0c0c0c]" : "border border-[#0c0c0c]"}`}></div>
-                                        <span className="text-[#0c0c0c] text-base font-medium font-jakarta leading-normal">
+                                        {/* Adjusted category item text size for mobile */}
+                                        <span className="text-[#0c0c0c] text-sm font-medium font-jakarta leading-normal sm:text-base">
                                             {kategori}
                                         </span>
                                     </button>
@@ -126,38 +157,37 @@ const Fauna = () => {
                         </div>
                     </div>
                     {/* Daftar Fauna */}
-                    <div className="w-[855px] flex flex-col justify-start items-center gap-[30px]">
+                    <div className="w-full md:w-[855px] flex flex-col justify-start items-center gap-[30px]">
                         {/* Grid Fauna */}
-                        <div className="flex flex-wrap gap-[30px]">
+                        <div className="grid grid-cols-2 lg:grid-cols-3 gap-[20px] sm:gap-[30px] w-full justify-items-center">
                             {loading ? (
-                                <div className="text-center text-lg text-[#0c0c0c] font-jakarta">Loading...</div>
+                                <div className="text-center text-lg text-[#0c0c0c] font-jakarta col-span-full">Loading...</div>
                             ) : faunaToShow.length === 0 ? (
-                                <div className="text-center text-lg text-[#0c0c0c] font-jakarta">Tidak ada fauna ditemukan.</div>
+                                <div className="text-center text-lg text-[#0c0c0c] font-jakarta col-span-full">Tidak ada fauna ditemukan.</div>
                             ) : (
                                 faunaToShow.map((fauna) => (
                                     <Link
                                         key={fauna.id}
                                         href={`/fauna/${fauna.slug}`}
-                                        className="w-[265px] h-full p-5 rounded-[20px] outline-1 outline-offset-[-1px] outline-[#d6d6d6] flex flex-col justify-start items-start gap-4 overflow-hidden hover:shadow-lg transition"
+                                        className="w-full max-w-[265px] h-full p-3 sm:p-5 rounded-[20px] outline-1 outline-offset-[-1px] outline-[#d6d6d6] flex flex-col justify-start items-start gap-3 sm:gap-4 overflow-hidden hover:shadow-lg transition"
                                     >
+                                        {/* Adjusted image height for mobile (slightly larger than 80px now) */}
                                         <img
-                                            className="self-stretch h-[136px] rounded-[20px] object-cover"
+                                            className="self-stretch h-[90px] sm:h-[136px] rounded-[15px] sm:rounded-[20px] object-cover"
                                             src={fauna.foto || "https://placehold.co/225x136"}
                                             alt={fauna.nama}
                                         />
-                                        <div className="flex flex-col justify-start items-start gap-3 w-full">
-                                            <div className="text-[#0c0c0c] text-2xl font-medium font-jakarta leading-loose truncate max-w-[220px]">
-                                                {fauna.nama.length > 20
-                                                    ? fauna.nama.slice(0, 20) + "..."
-                                                    : fauna.nama}
+                                        <div className="flex flex-col justify-start items-start gap-2 sm:gap-3 w-full">
+                                            {/* Adjusted fauna name font size for mobile (slightly larger than base now) */}
+                                            <div className="text-[#0c0c0c] text-base font-medium font-jakarta leading-tight sm:text-lg sm:leading-loose truncate w-full">
+                                                {fauna.nama}
                                             </div>
                                         </div>
                                         <div className="flex justify-between items-center w-full">
                                             <div className="flex justify-start items-center gap-2.5">
-                                                <div className="italic text-[#7f7f7f] text-base font-normal font-jakarta leading-normal truncate max-w-[180px]">
-                                                    {fauna.nama_latin.length > 20
-                                                        ? fauna.nama_latin.slice(0, 20) + "..."
-                                                        : fauna.nama_latin}
+                                                {/* Adjusted Latin name font size for mobile (slightly larger than xs now) */}
+                                                <div className="italic text-[#7f7f7f] text-xs font-normal font-jakarta leading-normal sm:text-sm truncate w-full">
+                                                    {fauna.nama_latin}
                                                 </div>
                                             </div>
                                         </div>
@@ -167,46 +197,46 @@ const Fauna = () => {
                         </div>
                         {/* Pagination */}
                         {totalPages > 1 && (
-                            <div className="inline-flex justify-center items-start mt-6">
+                            <div className="inline-flex justify-center items-start mt-4 sm:mt-6">
                                 <div className="flex justify-start items-center gap-1">
                                     {/* Previous */}
                                     <button
-                                        className="pl-2.5 pr-4 py-2.5 rounded-md inline-flex justify-center items-center gap-1 disabled:opacity-50"
+                                        className="px-2 py-1.5 rounded-md inline-flex justify-center items-center gap-1 disabled:opacity-50 sm:pl-2.5 sm:pr-4 sm:py-2.5"
                                         onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                                         disabled={currentPage === 1}
                                     >
-                                        <span className="text-[#0c0c0c] text-sm font-medium font-inter leading-tight">Previous</span>
+                                        <span className="text-[#0c0c0c] text-xs font-medium font-inter leading-tight sm:text-sm">Previous</span>
                                     </button>
                                     {/* Page Numbers with Ellipsis */}
                                     {getPagination(currentPage, totalPages).map((page, idx) =>
                                         typeof page === "string" ? (
                                             <span
                                                 key={page + idx}
-                                                className="w-10 py-2.5 rounded-md inline-flex justify-center items-center text-[#0c0c0c] text-sm font-medium font-inter leading-tight select-none"
+                                                className="w-8 py-1.5 rounded-md inline-flex justify-center items-center text-[#0c0c0c] text-xs font-medium font-inter leading-tight select-none sm:w-10 sm:py-2.5 sm:text-sm"
                                             >
                                                 ...
                                             </span>
                                         ) : (
                                             <button
                                                 key={page}
-                                                className={`w-10 py-2.5 rounded-md inline-flex justify-center items-center ${
+                                                className={`w-8 py-1.5 rounded-md inline-flex justify-center items-center sm:w-10 sm:py-2.5 ${
                                                     currentPage === page
                                                         ? "bg-white outline-1 outline-offset-[-1px] outline-[#d6d6d6]"
                                                         : ""
                                                 }`}
                                                 onClick={() => setCurrentPage(page)}
                                             >
-                                                <span className="text-[#0c0c0c] text-sm font-medium font-inter leading-tight">{page}</span>
+                                                <span className="text-[#0c0c0c] text-xs font-medium font-inter leading-tight sm:text-sm">{page}</span>
                                             </button>
                                         )
                                     )}
                                     {/* Next */}
                                     <button
-                                        className="pl-4 pr-2.5 py-2.5 rounded-md inline-flex justify-center items-center gap-1 disabled:opacity-50"
+                                        className="px-2 py-1.5 rounded-md inline-flex justify-center items-center gap-1 disabled:opacity-50 sm:pl-4 sm:pr-2.5 sm:py-2.5"
                                         onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                                         disabled={currentPage === totalPages}
                                     >
-                                        <span className="text-[#0c0c0c] text-sm font-medium font-inter leading-tight">Next</span>
+                                        <span className="text-[#0c0c0c] text-xs font-medium font-inter leading-tight sm:text-sm">Next</span>
                                     </button>
                                 </div>
                             </div>

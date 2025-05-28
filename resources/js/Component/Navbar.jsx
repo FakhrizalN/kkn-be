@@ -69,7 +69,7 @@ export default function Navbar() {
                 {/* Logo or Brand */}
                 <Link href="/" className="text-[#cbea7b] text-xl font-bold font-jakarta">
                     Sungai Wain
-                </Link>w
+                </Link>
                 {/* Hamburger for mobile */}
                 <button
                     className="lg:hidden text-[#cbea7b] focus:outline-none"

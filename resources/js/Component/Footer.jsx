@@ -15,9 +15,8 @@ export default function Footer() {
                 <div className="w-full max-w-[1120px] py-7 border-t border-[#d6d6d6] flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
                     <div className="flex items-center gap-2.5 mb-4 md:mb-0">
                         {/* Logo Placeholder */}
-                        <div className="w-[18px] h-[18px] bg-[#fcfcfc] rounded-full flex-shrink-0" />
                         <div className="text-[#fcfcfc] text-sm sm:text-base font-normal font-jakarta leading-normal">
-                            KKN ITK E4 2025. All rights reserved
+                            © KKN ITK E4 2025. All rights reserved
                         </div>
                     </div>
                     <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">

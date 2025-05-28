@@ -7,7 +7,7 @@ export default function Home() {
         <div className="w-full bg-white flex flex-col items-center font-jakarta">
             <Navbar />
             {/* Hero Section */}
-            <div className="w-full px-4 py-12 bg-white flex flex-col lg:flex-row justify-center items-center gap-8">
+            <div className="w-full px-4 py-12 bg-white flex flex-col sm:flex-row justify-center items-center gap-8">
                 <div className="w-full max-w-[544px] flex flex-col justify-start items-start gap-8">
                     <div className="w-full flex flex-col justify-start items-start gap-5">
                         <div className="w-full flex flex-col justify-start items-start gap-1">
@@ -32,8 +32,8 @@ export default function Home() {
                     </Link>
                 </div>
                 <img
-                    className="w-full max-w-[544px] h-auto lg:h-[700px] rounded-[20px] object-cover mt-8 lg:mt-0"
-                    src="https://placehold.co/544x700"
+                    className="w-full sm:w-[250px] md:w-[350px] lg:w-full max-w-[544px] h-auto lg:h-[700px] rounded-[20px] object-cover mt-8 lg:mt-0"
+                    src="/storage/pongo_pygmaeus.jpg"
                     alt="Hero"
                 />
             </div>
@@ -48,7 +48,7 @@ export default function Home() {
                     </div>
                     <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-8">
                         <div className="w-full max-w-[544px] h-[220px] sm:h-[320px] md:h-[420px] rounded-[20px] flex flex-col justify-center items-center mb-6 lg:mb-0">
-                            <img className="w-full h-full rounded-[20px] object-cover" src="https://placehold.co/544x420" alt="Tentang Sungai Wain" />
+                            <img className="w-full h-full rounded-[20px] object-cover" src="/storage/peta_hlsw.png" alt="Tentang Sungai Wain" />
                         </div>
                         <div className="w-full max-w-[544px] flex flex-col justify-start items-start gap-8">
                             <div className="flex flex-col justify-start items-start gap-5">
@@ -75,21 +75,21 @@ export default function Home() {
             {/* Section: Gallery */}
             <div className="w-full flex flex-col items-center bg-white">
                 <div className="w-full max-w-[1120px] px-4 py-12 flex flex-col items-center gap-12">
-                    <div className="w-full flex flex-col items-start gap-5">
-                        <div className="w-full text-[#0c0c0c] text-3xl sm:text-4xl md:text-5xl font-medium leading-[40px] md:leading-[60px]">
+                    <div className="w-full flex flex-col items-center gap-5 lg:items-start">
+                        <div className="w-full max-w-[682px] text-[#0c0c0c] text-3xl sm:text-4xl md:text-5xl font-medium leading-[40px] md:leading-[60px]">
                             Pesona Hutan Sungai Wain
                         </div>
                         <div className="w-full max-w-[682px] text-[#7f7f7f] text-base font-normal leading-normal">
                             Lihat lebih dekat keindahan alam dan aktivitas ekowisata di Hutan Lindung Sungai Wain melalui potret terbaik dari pengunjung dan tim pelestari.
                         </div>
                     </div>
-                    <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8">
-                        <div className="w-full max-w-[300px] flex flex-col gap-8">
+                    <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-8">
+                        <div className="w-full max-w-[300px] flex flex-col sm:flex-row justify-center lg:flex-col gap-8">
                             <img className="w-full h-[180px] sm:h-[234px] rounded-[20px] object-cover" src="https://placehold.co/300x234" alt="Gallery 1" />
                             <img className="w-full h-[180px] sm:h-[234px] rounded-[20px] object-cover" src="https://placehold.co/300x234" alt="Gallery 2" />
                         </div>
-                        <img className="w-full max-w-[456px] h-[220px] sm:h-[320px] md:h-[500px] rounded-[20px] object-cover my-8 md:my-0" src="https://placehold.co/456x500" alt="Gallery Center" />
-                        <div className="w-full max-w-[300px] flex flex-col gap-8">
+                        <img className="w-[300px] h-[180px] sm:h-[234px] flex lg:h-[500px] lg:w-full rounded-[20px] object-cover" src="https://placehold.co/456x500" alt="Gallery Center" />
+                        <div className="w-full max-w-[300px] flex flex-col sm:flex-row justify-center lg:flex-col gap-8">
                             <img className="w-full h-[180px] sm:h-[234px] rounded-[20px] object-cover" src="https://placehold.co/300x234" alt="Gallery 3" />
                             <img className="w-full h-[180px] sm:h-[234px] rounded-[20px] object-cover" src="https://placehold.co/300x234" alt="Gallery 4" />
                         </div>
