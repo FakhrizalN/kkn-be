@@ -172,7 +172,7 @@ const Flora = () => {
                                         {/* Adjusted image height for mobile (slightly larger than 80px) */}
                                         <img
                                             className="self-stretch h-[90px] sm:h-[136px] rounded-[15px] sm:rounded-[20px] object-cover"
-                                            src={flora.foto || "https://placehold.co/225x136"}
+                                            src={`/storage/${flora.foto}`}
                                             alt={flora.local_name}
                                         />
                                         <div className="flex flex-col justify-start items-start gap-2 sm:gap-3 w-full">

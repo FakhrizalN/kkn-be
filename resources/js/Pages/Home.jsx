@@ -7,7 +7,7 @@ export default function Home() {
         <div className="w-full bg-white flex flex-col items-center font-jakarta">
             <Navbar />
             {/* Hero Section */}
-            <div className="w-full px-4 py-12 bg-white flex flex-col sm:flex-row justify-center items-center gap-8">
+            <div className="w-full px-4 md:px-6 lg:px-8 py-12 bg-white flex flex-col sm:flex-row justify-center items-center gap-8">
                 <div className="w-full max-w-[544px] flex flex-col justify-start items-start gap-8">
                     <div className="w-full flex flex-col justify-start items-start gap-5">
                         <div className="w-full flex flex-col justify-start items-start gap-1">

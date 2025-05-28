@@ -86,8 +86,8 @@ const FloraDetail = ({ floraSlug }) => {
                         </div>
                             <img
                                 className="w-full max-w-[250px] h-auto max-h-[280px] sm:max-w-[300px] sm:max-h-[350px] md:max-w-[352px] md:max-h-[400px] rounded-[15px] sm:rounded-[20px] object-cover mx-auto md:mx-0" 
-                                src={flora.foto || `https://placehold.co/352x400/EEE/31343C?text=${encodeURIComponent(flora.local_name)}`} 
-                                alt={flora.local_name || "Gambar Flora"} 
+                                src={`/storage/${flora.foto}`}
+                                alt={flora.local_name || "Gambar Flora"}
                             />
                     </div>
 

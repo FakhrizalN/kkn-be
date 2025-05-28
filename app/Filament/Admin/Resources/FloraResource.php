@@ -13,12 +13,13 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\FileUpload;
+use Illuminate\Support\Str; // Tambahkan ini
 
 class FloraResource extends Resource
 {
     protected static ?string $model = Flora::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'icon-eco';
 
     public static function form(Form $form): Form
     {
@@ -29,7 +30,26 @@ class FloraResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('latin_name')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                        if ($operation === 'create') {
+                            $baseSlug = Str::slug($state);
+                            $slug = $baseSlug;
+                            $count = 1;
+
+                            // Cek apakah slug sudah ada di database
+                            while (Flora::where('slug', $slug)->exists()) {
+                                $slug = $baseSlug . '-' . $count++;
+                            }
+                            $set('slug', $slug);
+                        }
+                    }),
+                Forms\Components\TextInput::make('slug')
+                    ->required()
+                    ->maxLength(255)
+                    ->unique(ignoreRecord: true)
+                    ->readOnly(), // Jadikan slug read-only karena diisi otomatis
                 Forms\Components\TextInput::make('family')
                     ->required()
                     ->maxLength(255),
@@ -46,8 +66,8 @@ class FloraResource extends Resource
                     ->required()
                     ->image()
                     ->disk('public')
+                    ->directory('Flora')
                     ->columnSpanFull(),
-
             ]);
     }
 
@@ -61,27 +81,37 @@ class FloraResource extends Resource
                 Tables\Columns\TextColumn::make('latin_name')
                     ->searchable()
                     ->limit(50),
+                Tables\Columns\TextColumn::make('slug')
+                    ->searchable()
+                    ->limit(50)
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('family')
                     ->searchable()
                     ->limit(50),
-                Tables\Columns\TextColumn::make('description')
-                    ->limit(100),
-                Tables\Columns\TextColumn::make('ekologi')
-                    ->limit(100),
-                Tables\Columns\TextColumn::make('distribusi')
-                    ->limit(100),
-                Tables\Columns\ImageColumn::make('image')
+                Tables\Columns\TextColumn::make('kategori')
+                    ->searchable()
+                    ->limit(50),
+                Tables\Columns\ImageColumn::make('foto')
                     ->height(50),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('kategori')
+                    ->options([
+                        'pohon' => 'Pohon',
+                        'semak' => 'Semak',
+                        'liana' => 'Liana',
+                        'herba' => 'Herba',
+                        'lainnya' => 'Lainnya',
+                        // ... dll
+                        ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

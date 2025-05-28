@@ -174,7 +174,7 @@ const Fauna = () => {
                                         {/* Adjusted image height for mobile (slightly larger than 80px now) */}
                                         <img
                                             className="self-stretch h-[90px] sm:h-[136px] rounded-[15px] sm:rounded-[20px] object-cover"
-                                            src={fauna.foto || "https://placehold.co/225x136"}
+                                            src={`/storage/${fauna.foto}`}
                                             alt={fauna.nama}
                                         />
                                         <div className="flex flex-col justify-start items-start gap-2 sm:gap-3 w-full">
