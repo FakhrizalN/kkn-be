@@ -49,6 +49,9 @@ export default function Navbar() {
             // Aktif jika di /flora atau /fauna
             return url.startsWith("/flora") || url.startsWith("/fauna");
         }
+        if (href === "/layanan"){
+            return url.startsWith("/form") || url.startsWith("/layanan");
+        }
         if (href === "/") {
             return url === "/";
         }

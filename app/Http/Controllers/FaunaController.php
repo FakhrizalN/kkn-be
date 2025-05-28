@@ -62,6 +62,8 @@ class FaunaController extends Controller
             'berat' => 'nullable|numeric',
             'panjang' => 'nullable|numeric',
             'foto' => 'required|string',
+            'habitat' => 'nullable|string|max:255',
+            'kategori' => 'required|string|max:255',
         ]);
 
         $fauna = Fauna::create($fields);
@@ -92,6 +94,8 @@ class FaunaController extends Controller
         'berat' => 'nullable|numeric',
         'panjang' => 'nullable|numeric',
         'foto' => 'sometimes|required|string',
+        'habitat' => 'nullable|string|max:255',
+        'kategori' => 'sometimes|required|string|max:255',
     ]);
 
     $fauna->update($fields);

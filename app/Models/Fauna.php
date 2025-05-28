@@ -19,6 +19,8 @@ class Fauna extends Model
         'berat',
         'panjang',
         'foto',
+        'habitat',
+        'kategori'
     ];
     public $timestamps = false;
     public function setNamaAttribute($value)

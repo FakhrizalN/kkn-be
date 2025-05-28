@@ -67,6 +67,7 @@ class FloraController extends Controller
             'ekologi' => 'required|string',
             'distribusi' => 'required|string',
             'foto' => 'required|string',
+            'kategori' => 'required|string|max:255',
         ]);
 
         $flora = Flora::create($fields);
@@ -97,6 +98,7 @@ class FloraController extends Controller
         'ekologi' => 'sometimes|required|string',
         'distribusi' => 'sometimes|required|string',
         'foto' => 'sometimes|required|string',
+        'kategori' => 'sometimes|required|string|max:255',
     ]);
 
     $flora->update($fields);

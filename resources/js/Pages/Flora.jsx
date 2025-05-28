@@ -7,9 +7,8 @@ import Navbar from "../Component/Navbar";
 const kategoriList = [
     "Pohon",
     "Semak",
-    "Merambat",
-    "Tumbuhan Bawah",
-    "Anggrek",
+    "Liana",
+    "Herba",
     "Lainnya"
 ];
 
