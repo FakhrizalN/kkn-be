@@ -7,9 +7,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: 'resources/js/app.jsx',
-            refresh: [true,
-            ...refreshPaths,
-                'app/Livewire/**',]
+            refresh: true,
         }),
         react(),tailwindcss(),
     ],
