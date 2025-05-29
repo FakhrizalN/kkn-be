@@ -81,7 +81,7 @@ const Form = () => {
         className="w-full flex flex-col items-center flex-grow" // Added flex-grow
         onSubmit={handleSubmit}
       >
-        <div className="self-stretch px-4 py-16 sm:px-8 md:px-12 lg:px-[15px] sm:py-24 md:py-32 lg:py-24 bg-white flex flex-col justify-center items-center gap-8 sm:gap-12"> {/* Adjusted padding */}
+        <div className="self-stretch px-4 py-12 sm:px-8 md:px-12 lg:px-[15px] sm:py-24 md:py-32 lg:py-24 bg-white flex flex-col justify-center items-center gap-8 sm:gap-12"> {/* Adjusted padding */}
           {/* Header Section */}
           <div className="w-full max-w-[1120px] flex flex-col items-center gap-4 sm:gap-5 text-center"> {/* Added max-w, adjusted gap */}
             <div className="w-full flex flex-col items-center gap-1">

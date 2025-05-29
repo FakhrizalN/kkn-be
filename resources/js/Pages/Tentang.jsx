@@ -8,7 +8,7 @@ const Tentang = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="w-full flex flex-col items-center pt-24 pb-8 sm:pt-36 sm:pb-12 bg-white px-4"> {/* Adjusted padding, added px-4 for horizontal mobile padding */}
+      <div className="w-full flex flex-col items-center pt-12 md:pt-24 pb-8 sm:pt-36 sm:pb-12 bg-white px-4"> {/* Adjusted padding, added px-4 for horizontal mobile padding */}
         <div className="w-full max-w-[1120px] flex flex-col lg:flex-row gap-8 mt-8 sm:mt-12 text-center items-center lg:text-left"> {/* Changed fixed width, added max-width, adjusted gap, stacks on mobile */}
           <img
             // Adjusted image width/height for responsiveness
@@ -133,7 +133,7 @@ const Tentang = () => {
               className="w-full h-full rounded-[15px] sm:rounded-[20px] border-0" // Ensure class applies correctly
             ></iframe>
           </div>
-          <div className="w-full md:w-[530px] flex flex-col sm:flex-row md:flex-col gap-8"> {/* Stacks on mobile/small, then row on sm, then column on md */}
+          <div className="w-full md:w-[530px] flex flex-col sm:flex-row md:flex-row gap-8"> {/* Stacks on mobile/small, then row on sm, then column on md */}
             <div className="flex flex-col gap-6 flex-1"> {/* flex-1 to take available space */}
               <div className="text-stone-950 text-xl sm:text-2xl font-medium text-center md:text-left">Kontak</div> {/* Adjusted font size, text alignment */}
               <div className="w-full flex flex-col gap-2.5 items-center md:items-start"> {/* Full width, centered on mobile */}

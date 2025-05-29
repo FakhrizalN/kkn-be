@@ -106,7 +106,7 @@ const Flora = () => {
     return (
         <div className="w-full bg-white min-h-screen flex flex-col justify-center items-center">
             <Navbar />
-            <div className="self-stretch px-[15px] py-[100px] bg-white flex flex-col justify-start items-center gap-[50px] md:px-4 md:py-12">
+            <div className="self-stretch px-[15px] py-12 md:py-24 bg-white flex flex-col justify-start items-center gap-[50px]">
                 {/* Header */}
                 <div className="w-full max-w-[1120px] pb-[50px] border-b border-[#d6d6d6] flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left md:pb-8">
                     {/* Adjusted header text size for mobile */}
