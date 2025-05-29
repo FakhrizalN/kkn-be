@@ -19,7 +19,7 @@ class FloraResource extends Resource
 {
     protected static ?string $model = Flora::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'ionicon-leaf';
 
     public static function form(Form $form): Form
     {
@@ -62,6 +62,17 @@ class FloraResource extends Resource
                 Forms\Components\Textarea::make('distribusi')
                     ->required()
                     ->maxLength(65535),
+                Forms\Components\Select::make('kategori')
+                    ->required()
+                    ->options([
+                        'pohon' => 'Pohon',
+                        'semak' => 'Semak',
+                        'liana' => 'Liana',
+                        'herba' => 'Herba',
+                        'lainnya' => 'Lainnya',
+                    ])
+                    ->native(false)
+                    ->searchable(),
                 Forms\Components\FileUpload::make('foto')
                     ->required()
                     ->image()
