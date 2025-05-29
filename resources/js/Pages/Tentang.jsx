@@ -13,7 +13,7 @@ const Tentang = () => {
           <img
             // Adjusted image width/height for responsiveness
             className="w-[544px] h-auto max-h-[300px] sm:max-h-[400px] md:max-h-[550px] rounded-[15px] sm:rounded-[20px] object-cover mx-auto"
-            src="https://placehold.co/544x550" // Placeholder, ideally use a responsive image source
+            src="/storage/B4.jpg" // Placeholder, ideally use a responsive image source
             alt="Hutan Lindung Sungai Wain"
           />
           <div className="w-full md:w-[420px] xl:w-[544px] flex flex-col gap-6 sm:gap-12"> {/* Full width on mobile, adjusted gap */}
@@ -35,13 +35,13 @@ const Tentang = () => {
             {/* Gallery images */}
             <div className="flex flex-row justify-center md:justify-start gap-2 sm:gap-4"> {/* Changed to flex-wrap, centered on mobile */}
               <div className="w-[calc(33.33%-4px)] sm:w-44 h-20 sm:h-32 flex flex-col justify-center items-center overflow-hidden"> {/* Adjusted width for 3 cols mobile, reduced height */}
-                <img className="w-full h-full rounded-[8px] sm:rounded-[10px] object-cover" src="https://placehold.co/170x130" alt="gallery1" />
+                <img className="w-full h-full rounded-[8px] sm:rounded-[10px] object-cover" src="/storage/B2.jpg" alt="gallery1" />
               </div>
               <div className="w-[calc(33.33%-4px)] sm:w-44 h-20 sm:h-32 flex flex-col justify-center items-center overflow-hidden"> {/* Adjusted width for 3 cols mobile, reduced height */}
-                <img className="w-full h-full rounded-[8px] sm:rounded-[10px] object-cover" src="https://placehold.co/170x130" alt="gallery2" />
+                <img className="w-full h-full rounded-[8px] sm:rounded-[10px] object-cover" src="/storage/B3.jpg" alt="gallery2" />
               </div>
               <div className="w-[calc(33.33%-4px)] sm:w-44 h-20 sm:h-32 flex flex-col justify-center items-center overflow-hidden"> {/* Adjusted width for 3 cols mobile, reduced height */}
-                <img className="w-full h-full rounded-[8px] sm:rounded-[10px] object-cover" src="https://placehold.co/170x130" alt="gallery3" />
+                <img className="w-full h-full rounded-[8px] sm:rounded-[10px] object-cover" src="/storage/B1.jpg" alt="gallery3" />
               </div>
             </div>
           </div>
