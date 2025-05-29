@@ -2,14 +2,19 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+// Tambahkan ini:
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail; // Biarkan ini terkomentar jika tidak digunakan
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 
-class User extends Authenticatable
+// Pastikan 'implements FilamentUser' ditambahkan di sini
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasApiTokens;
@@ -45,5 +50,20 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Determine if the user can access the Filament admin panel.
+     *
+     * @param  \Filament\Panel  $panel
+     * @return bool
+     */
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Mengembalikan true, yang berarti SEMUA user yang berhasil login
+        // akan memiliki akses ke panel admin.
+        // Pertimbangkan untuk menambahkan logika otorisasi yang lebih ketat
+        // di lingkungan produksi (misalnya, berdasarkan peran atau kolom 'is_admin').
+        return true;
     }
 }
