@@ -176,10 +176,16 @@ const Layanan = () => {
                 <div className="text-stone-950 text-lg sm:text-xl font-medium">sungaiwain96@gmail.com</div>
               </div>
             </div>
-            <button className="flex items-center justify-center gap-2 px-3.5 py-2.5 bg-[#cbea7b] rounded-lg shadow outline-1 outline-lime-300 w-fit mx-auto md:mx-0">
+            <a
+              href="https://wa.me/628115382227"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 px-3.5 py-2.5 bg-[#cbea7b] rounded-lg shadow outline-1 outline-lime-300 w-fit mx-auto md:mx-0"
+              aria-label="WhatsApp"
+            >
               <FiPhone className="w-5 h-5" />
-              <span className="text-stone-950 text-sm font-semibold">Call +6289-9824-1808</span>
-            </button>
+              <span className="text-stone-950 text-sm font-semibold">Call +62 811 538 2227</span>
+            </a>
           </div>
           {/* Right */}
           <div className="flex-1 flex flex-col gap-2">
