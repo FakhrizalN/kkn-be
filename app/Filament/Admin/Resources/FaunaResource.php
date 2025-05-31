@@ -52,6 +52,9 @@ class FaunaResource extends Resource
                 Forms\Components\TextInput::make('nama_family')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Textarea::make('familyDesc')
+                    ->required()
+                    ->maxLength(65535),
                 Forms\Components\Textarea::make('deskripsi')
                     ->required()
                     ->maxLength(65535)
@@ -59,6 +62,9 @@ class FaunaResource extends Resource
                 Forms\Components\TextInput::make('habitat')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Textarea::make('ciri_khas')
+                    ->required()
+                    ->maxLength(65535),
                 Forms\Components\Select::make('kategori') // Ganti TextInput dengan Select
                     ->required()
                     ->options([ // Definisikan opsi dropdown

@@ -53,6 +53,9 @@ class FloraResource extends Resource
                 Forms\Components\TextInput::make('family')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Textarea::make('familyDesc')
+                    ->required()
+                    ->maxLength(65535),
                 Forms\Components\Textarea::make('description')
                     ->required()
                     ->maxLength(65535),

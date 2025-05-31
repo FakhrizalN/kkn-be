@@ -69,15 +69,6 @@ const FaunaDetail = ({ faunaSlug }) => {
                     </div>
                     {/* Info Cards Section */}
                     <div className="w-full max-w-[1120px] flex flex-col sm:flex-row justify-center items-stretch gap-4 sm:gap-8">
-                        {/* Kategori Card */}
-                        <div className="w-full sm:w-1/3 px-3 py-5 sm:px-5 sm:py-10 bg-[#f9f9fb] rounded-[15px] sm:rounded-[20px] flex flex-col justify-start items-center sm:items-start gap-2 sm:gap-4 outline-1 outline-offset-[-1px] outline-[#d6d6d6] text-center sm:text-left">
-                            <div className="flex flex-col justify-start items-center sm:items-start gap-1">
-                                {/* Kategori Title - Reduced for mobile */}
-                                <div className="text-[#547417] text-2xl sm:text-3xl md:text-4xl font-medium leading-[32px] sm:leading-[40px] md:leading-[44px]">Kategori</div>
-                                {/* Kategori Value - Reduced for mobile */}
-                                <div className="text-[#0c0c0c] text-base sm:text-lg md:text-2xl font-medium leading-normal sm:leading-loose">{fauna.kategori || "Tidak diketahui"}</div>
-                            </div>
-                        </div>
                         {/* Family Card */}
                         <div className="w-full sm:w-1/3 px-3 py-5 sm:px-5 sm:py-10 bg-[#f9f9fb] rounded-[15px] sm:rounded-[20px] flex flex-col justify-start items-center sm:items-start gap-2 sm:gap-4 outline-1 outline-offset-[-1px] outline-[#d6d6d6] text-center sm:text-left">
                             <div className="flex flex-col justify-start items-center sm:items-start gap-1">
@@ -85,6 +76,16 @@ const FaunaDetail = ({ faunaSlug }) => {
                                 <div className="text-[#547417] text-2xl sm:text-3xl md:text-4xl font-medium leading-[32px] sm:leading-[40px] md:leading-[44px]">Family</div>
                                 {/* Family Value - Reduced for mobile */}
                                 <div className="text-[#0c0c0c] text-base sm:text-lg md:text-2xl font-medium leading-normal sm:leading-loose">{fauna.nama_family || "Tidak diketahui"}</div>
+                                <div className="text-[#7f7f7f] text-sm sm:text-base font-normal leading-normal">{fauna.familyDesc || "Tidak diketahui"}</div>
+                            </div>
+                        </div>
+                        {/* Ciri khas */}
+                        <div className="w-full sm:w-1/3 px-3 py-5 sm:px-5 sm:py-10 bg-[#f9f9fb] rounded-[15px] sm:rounded-[20px] flex flex-col justify-start items-center sm:items-start gap-2 sm:gap-4 outline-1 outline-offset-[-1px] outline-[#d6d6d6] text-center sm:text-left">
+                            <div className="flex flex-col justify-start items-center sm:items-start gap-1">
+                                {/* Ciri khas Title - Reduced for mobile */}
+                                <div className="text-[#547417] text-2xl sm:text-3xl md:text-4xl font-medium leading-[32px] sm:leading-[40px] md:leading-[44px]">Ciri khas</div>
+                                {/* Ciri khas Value - Reduced for mobile */}
+                                <div className="text-[#7f7f7f] text-sm sm:text-base font-normal leading-normal">{fauna.ciri_khas || "Tidak diketahui"}</div>
                             </div>
                         </div>
                         {/* Habitat Card */}
