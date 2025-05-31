@@ -123,7 +123,7 @@ const Tentang = () => {
             <iframe
               title="Lokasi Hutan Lindung Sungai Wain"
               // Use a real Google Maps embed URL here, replace with your actual map
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.857640306351!2d116.89961557451382!3d-1.258957435552396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2ae141b712c96c4d%3A0xf657c9a93077e685!2sHutan%20Lindung%20Sungai%20Wain%20(HLSW)!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid"
+              src="https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d31912.084715680936!2d116.84025280772154!3d-1.1529268179921994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x2df149376d946aad%3A0x36a71e88af2a1299!2sIndomaret%20KM.%2012!3m2!1d-1.1698578!2d116.88035889999999!4m5!1s0x2df149298f826ab5%3A0xc8c509df2f71cdca!2sKebun%20Raya%20Balikpapan%2C%20Jalan%20Soekarno%20Hatta%20Km.%2015%2C%20Karang%20Joang%2C%20Kec.%20Balikpapan%20Utara%2C%20Kota%20Balikpapan%2C%20Kalimantan%20Timur%2076127!3m2!1d-1.136531!2d116.8580073!4m5!1s0x2df14a2c3a41846b%3A0x8fbf08ad5ecba082!2sHutan%20Lindung%20Sungai%20Wain!3m2!1d-1.1452551!2d116.83971559999999!5e0!3m2!1sid!2sid!4v1748684732437!5m2!1sid!2sid"
               width="100%" // Make iframe fluid within its parent div
               height="100%" // Make iframe fluid within its parent div
               style={{ border: 0 }}

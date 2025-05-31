@@ -86,7 +86,7 @@ export default function Home() {
                     <div className="w-full flex flex-col lg:flex-row justify-center items-center gap-8">
                         <div className="w-full max-w-[300px] flex flex-col sm:flex-row justify-center lg:flex-col gap-8">
                             <img className="w-full h-[180px] sm:h-[234px] rounded-[20px] object-cover" src="/storage/B6.jpg" alt="Gallery 1" />
-                            <img className="w-full h-[180px] sm:h-[234px] rounded-[20px] object-cover" src="/storage/B7.webp" alt="Gallery 2" />
+                            <img className="w-full h-[180px] sm:h-[234px] rounded-[20px] object-cover" src="/storage/B7.jpg" alt="Gallery 2" />
                         </div>
                         <img className="w-[300px] h-[180px] sm:h-[234px] flex lg:h-[500px] lg:w-full rounded-[20px] object-cover" src="/storage/B8.jpg" alt="Gallery Center" />
                         <div className="w-full max-w-[300px] flex flex-col sm:flex-row justify-center lg:flex-col gap-8">

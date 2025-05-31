@@ -70,7 +70,7 @@ const Form = () => {
     e.preventDefault();
     const fasilitasText = fasilitas.length > 0 ? fasilitas.join(", ") : "-";
     const text = `Halo, saya ingin melakukan pemesanan:\n\nNama Lengkap: ${nama}\nEmail: ${email}\nPaket: ${paket}\nFasilitas Tambahan: ${fasilitasText}\nPesan: ${pesan}`;
-    const url = `https://wa.me/6281998241808?text=${encodeURIComponent(text)}`;
+    const url = `https://wa.me/628115382227?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   };
 
