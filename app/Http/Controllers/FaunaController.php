@@ -58,12 +58,15 @@ class FaunaController extends Controller
             'nama' => 'required|string|max:255',
             'nama_latin' => 'required|string|max:255',
             'nama_family' => 'required|string|max:255',
+            'familyDesc' => 'required|string|max:65535',	
             'deskripsi' => 'required|string',
             'berat' => 'nullable|numeric',
             'panjang' => 'nullable|numeric',
             'foto' => 'required|string',
             'habitat' => 'nullable|string|max:255',
             'kategori' => 'required|string|max:255',
+            'ciri_khas' => 'required|string|max:65535',
+
         ]);
 
         $fauna = Fauna::create($fields);

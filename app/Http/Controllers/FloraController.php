@@ -68,6 +68,7 @@ class FloraController extends Controller
             'distribusi' => 'required|string',
             'foto' => 'required|string',
             'kategori' => 'required|string|max:255',
+            'familyDesc' => 'required|string',
         ]);
 
         $flora = Flora::create($fields);
@@ -99,6 +100,7 @@ class FloraController extends Controller
         'distribusi' => 'sometimes|required|string',
         'foto' => 'sometimes|required|string',
         'kategori' => 'sometimes|required|string|max:255',
+        'familyDesc' => 'sometimes|required|string',
     ]);
 
     $flora->update($fields);

@@ -96,10 +96,11 @@ const FloraDetail = ({ floraSlug }) => {
                         {/* Family */}
                         <div className="w-full md:w-1/3 px-4 py-6 bg-[#f9f9fb] rounded-[15px] flex flex-col justify-start items-center md:items-start gap-2 border border-[#d6d6d6] text-center md:text-left"> {/* Reduced px, py, gap, rounded. Added text-center/left */}
                             <div className="flex flex-col justify-start items-center md:items-start gap-1">
-                                {/* Family Title - Further reduced for mobile */}
                                 <div className="text-[#547417] text-xl sm:text-2xl md:text-3xl font-medium leading-tight sm:leading-[32px] md:leading-[44px]">Family</div>
-                                {/* Family Value - Further reduced for mobile */}
                                 <div className="text-[#0c0c0c] text-base sm:text-xl md:text-2xl font-medium leading-normal sm:leading-relaxed">{flora.family || "Tidak diketahui"}</div>
+                                <div className="text-[#7f7f7f] text-sm sm:text-base font-normal leading-normal">
+                                    {flora.familyDesc || "Informasi deskripsi family tidak tersedia."}
+                                </div>
                             </div>
                         </div>
 

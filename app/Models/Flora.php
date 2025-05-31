@@ -18,6 +18,7 @@ class Flora extends Model
         'distribusi',
         'foto',
         'kategori',
+        'familyDesc',
     ];
     public function setLatinNameAttribute($value)
     {
