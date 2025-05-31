@@ -57,8 +57,7 @@ class FaunaResource extends Resource
                     ->maxLength(65535),
                 Forms\Components\Textarea::make('deskripsi')
                     ->required()
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
+                    ->maxLength(65535),
                 Forms\Components\TextInput::make('habitat')
                     ->required()
                     ->maxLength(255),
