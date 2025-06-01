@@ -1,13 +1,63 @@
 import { Link } from "@inertiajs/react";
+import { useEffect, useState } from 'react';
 import Foooter from "../Component/Footer";
 import Navbar from "../Component/Navbar";
 
 export default function Home() {
+    const images = [
+        "/storage/pongo_pygmaeus.jpg",
+        "/storage/slide2.jpg",
+        "/storage/slide3.jpg",
+        "/storage/pongo_pygmaeus.jpg"
+    ];
+
+
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [transitionEnabled, setTransitionEnabled] = useState(true);
+
+
+    useEffect(() => {
+        const slideDuration = 5000;
+        const transitionSpeed = 500;
+
+        let slideshowInterval;
+
+        const startInterval = (duration) => {
+            clearInterval(slideshowInterval);
+            slideshowInterval = setInterval(() => {
+                setCurrentImageIndex((prevIndex) => {
+                    const nextIndex = prevIndex + 1;
+
+                    if (nextIndex === images.length) {
+
+                        setTransitionEnabled(false);
+                        startInterval(slideDuration);
+                        return 0;
+                    }
+                    else if (nextIndex === images.length - 1) {
+                        setTransitionEnabled(true);
+                        startInterval(transitionSpeed);
+                        return nextIndex;
+                    }
+                    else {
+                        setTransitionEnabled(true);
+                        startInterval(slideDuration);
+                        return nextIndex;
+                    }
+                });
+            }, duration);
+        };
+
+        startInterval(slideDuration);
+
+        return () => clearInterval(slideshowInterval);
+    }, [images.length]);
+
     return (
         <div className="w-full bg-white flex flex-col items-center font-jakarta">
             <Navbar />
             {/* Hero Section */}
-            <div className="w-full px-4 md:px-6 lg:px-8 py-12 bg-white flex flex-col sm:flex-row justify-center items-center gap-8">
+            <div className="w-full px-4 md:px-6 lg:px-8 py-12 bg-white flex flex-col md:flex-row justify-center items-center gap-8">
                 <div className="w-full max-w-[544px] flex flex-col justify-start items-start gap-8">
                     <div className="w-full flex flex-col justify-start items-start gap-5">
                         <div className="w-full flex flex-col justify-start items-start gap-1">
@@ -31,11 +81,25 @@ export default function Home() {
                         </span>
                     </Link>
                 </div>
-                <img
-                    className="w-full sm:w-[250px] md:w-[350px] lg:w-full max-w-[544px] h-auto lg:h-[700px] rounded-[20px] object-cover mt-8 lg:mt-0"
-                    src="/storage/pongo_pygmaeus.jpg"
-                    alt="Hero"
-                />
+                {/* Slideshow Container */}
+                <div className="w-full lg:w-full max-w-[544px] rounded-[20px] overflow-hidden mt-8 lg:mt-0 relative">
+                    <div
+                        className="flex h-full"
+                        style={{
+                            transform: `translateX(-${currentImageIndex * 100}%)`,
+                            transition: transitionEnabled ? 'transform 0.5s ease-in-out' : 'none'
+                        }}
+                    >
+                        {images.map((image, index) => (
+                            <img
+                                key={index}
+                                className="w-full h-full object-cover flex-shrink-0"
+                                src={image}
+                                alt={`Slideshow image ${index + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
             </div>
 
             {/* Section: Tentang Sungai Wain */}
