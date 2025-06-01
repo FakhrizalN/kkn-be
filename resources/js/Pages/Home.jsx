@@ -91,7 +91,7 @@ export default function Home() {
                         <img className="w-[300px] h-[180px] sm:h-[234px] flex lg:h-[500px] lg:w-full rounded-[20px] object-cover" src="/storage/B8.jpg" alt="Gallery Center" />
                         <div className="w-full max-w-[300px] flex flex-col sm:flex-row justify-center lg:flex-col gap-8">
                             <img className="w-full h-[180px] sm:h-[234px] rounded-[20px] object-cover" src="/storage/B3.jpg" alt="Gallery 3" />
-                            <img className="w-full h-[180px] sm:h-[234px] rounded-[20px] object-cover" src="/storage/B4.jpg" alt="Gallery 4" />
+                            <img className="w-full h-[180px] sm:h-[234px] rounded-[20px] object-cover" src="/storage/B9.jpg" alt="Gallery 4" />
                         </div>
                     </div>
                 </div>
