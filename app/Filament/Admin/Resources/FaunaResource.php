@@ -12,7 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\FileUpload;
+// Pastikan FileUpload di-import jika belum, tapi biasanya sudah otomatis
+// use Filament\Forms\Components\FileUpload;
 use Illuminate\Support\Str;
 
 class FaunaResource extends Resource
@@ -30,13 +31,24 @@ class FaunaResource extends Resource
                     ->maxLength(255)
                     ->live(onBlur: true)
                     ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
-                        if ($operation === 'create') {
+                        if ($operation === 'create' || $operation === 'edit') { // Handle slug update on edit too if desired
                             $baseSlug = Str::slug($state);
                             $slug = $baseSlug;
                             $count = 1;
 
-                            while (Fauna::where('slug', $slug)->exists()) {
+                            // For edit, ensure the slug is unique excluding the current record
+                            $query = Fauna::where('slug', $slug);
+                            if ($operation === 'edit' && isset($this->record)) {
+                                $query->where('id', '!=', $this->record->id);
+                            }
+                            
+                            while ($query->exists()) {
                                 $slug = $baseSlug . '-' . $count++;
+                                // Re-query for the new slug
+                                $query = Fauna::where('slug', $slug);
+                                if ($operation === 'edit' && isset($this->record)) {
+                                    $query->where('id', '!=', $this->record->id);
+                                }
                             }
                             $set('slug', $slug);
                         }
@@ -44,8 +56,9 @@ class FaunaResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255)
-                    ->unique(ignoreRecord: true)
-                    ->readOnly(),
+                    ->unique(Fauna::class, 'slug', ignoreRecord: true) // More robust uniqueness check
+                    ->readOnlyOn('edit') // Make it read-only on edit page but allow initial set
+                    ->helperText('Slug akan dibuat otomatis setelah Nama diisi. Bisa diedit jika perlu sebelum disimpan (pada mode create).'),
                 Forms\Components\TextInput::make('nama_latin')
                     ->required()
                     ->maxLength(255),
@@ -54,19 +67,22 @@ class FaunaResource extends Resource
                     ->maxLength(255),
                 Forms\Components\Textarea::make('familyDesc')
                     ->required()
-                    ->maxLength(65535),
+                    ->maxLength(65535)
+                    ->columnSpanFull(), // Agar lebih lebar
                 Forms\Components\Textarea::make('deskripsi')
                     ->required()
-                    ->maxLength(65535),
+                    ->maxLength(65535)
+                    ->columnSpanFull(), // Agar lebih lebar
                 Forms\Components\TextInput::make('habitat')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('ciri_khas')
                     ->required()
-                    ->maxLength(65535),
-                Forms\Components\Select::make('kategori') // Ganti TextInput dengan Select
+                    ->maxLength(65535)
+                    ->columnSpanFull(), // Agar lebih lebar
+                Forms\Components\Select::make('kategori')
                     ->required()
-                    ->options([ // Definisikan opsi dropdown
+                    ->options([
                         'Mamalia' => 'Mamalia',
                         'Burung' => 'Burung',
                         'Reptil' => 'Reptil',
@@ -78,11 +94,11 @@ class FaunaResource extends Resource
                     ->searchable(),
                 Forms\Components\FileUpload::make('foto')
                     ->required()
-                    ->image()
+                    ->image() // Penting untuk memberi tahu Filament bahwa ini adalah gambar
                     ->disk('public')
                     ->directory('Fauna')
-                    ->columnSpanFull(),
-                
+                    ->imageEditor()
+                    ->columnSpanFull(),s
             ]);
     }
 
@@ -114,6 +130,7 @@ class FaunaResource extends Resource
                     ->sortable()
                     ->limit(50),
                 Tables\Columns\ImageColumn::make('foto')
+                    ->disk('public') // Pastikan disk sama dengan saat upload
                     ->height(50)
                     ->width(50)
                     ->circular(),
