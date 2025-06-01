@@ -189,6 +189,26 @@ const Tentang = () => {
                   </svg>
                 </a>
               </div>
+              <div className="flex justify-center md:justify-start mt-6">
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&origin=&destination=Hutan+Lindung+Sungai+Wain,+Karang+Joang,+Kota+Balikpapan,+Kalimantan+Timur&waypoints=Kebun+Raya+Balikpapan,+Karang+Joang,+Kota+Balikpapan,+Kalimantan+Timur&travelmode=DRIVING_MODE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div data-hierarchy="Primary" data-icon="Default" data-size="lg" data-state="Default" className="px-4 py-2.5 bg-[#cbea7b] rounded-lg shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] outline outline-1 outline-offset-[-1px] outline-[#cbea7b] inline-flex justify-center items-center gap-1.5 overflow-hidden cursor-pointer hover:bg-opacity-80 transition">
+                    <div className="justify-start text-black text-base font-semibold font-['Plus_Jakarta_Sans'] leading-normal">Dapatkan Petunjuk Arah</div>
+                    <div className="size-5 relative bg-white/0 overflow-hidden">
+                        <div className="w-full h-full items-center justify-center">
+                          <img
+                          src="/storage/icon/Arrow.svg"
+                          alt="Arrow Icon"
+                          className="w-full h-full"
+                          />
+                        </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
             <div className="w-full sm:w-56 pl-0 sm:pl-8 border-l-0 sm:border-l border-zinc-300 flex flex-col gap-4 sm:gap-6 text-center md:text-left"> {/* Removed left border on mobile, stacked text alignment */}
               <div className="text-stone-950 text-xl sm:text-2xl font-medium">Jam Operasional</div> {/* Adjusted font size */}

@@ -98,7 +98,7 @@ class FaunaResource extends Resource
                     ->disk('public')
                     ->directory('Fauna')
                     ->imageEditor()
-                    ->columnSpanFull(),s
+                    ->columnSpanFull(),
             ]);
     }
 
