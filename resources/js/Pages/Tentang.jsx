@@ -117,7 +117,7 @@ const Tentang = () => {
 
       {/* Location Section */}
       <div className="w-full flex justify-center items-center bg-white py-16 sm:py-24 px-4"> {/* Adjusted padding, added px-4 */}
-        <div className="w-full max-w-[1120px] flex flex-col md:flex-row gap-10 md:gap-8"> {/* Changed fixed width, added max-width, adjusted gap, stacks on mobile */}
+        <div className="w-full max-w-[1120px] flex flex-col md:flex-row gap-4 md:gap-8"> {/* Changed fixed width, added max-width, adjusted gap, stacks on mobile */}
           {/* Ganti image dengan embed Google Maps */}
           <div className="w-full md:w-[558px] h-[200px] sm:h-72 rounded-[15px] sm:rounded-[20px] flex flex-col justify-center items-center overflow-hidden"> {/* Full width, adjusted height, rounded corners */}
             <iframe
@@ -125,7 +125,7 @@ const Tentang = () => {
               // Use a real Google Maps embed URL here, replace with your actual map
               src="https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d31912.084715680936!2d116.84025280772154!3d-1.1529268179921994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e0!4m5!1s0x2df149376d946aad%3A0x36a71e88af2a1299!2sIndomaret%20KM.%2012!3m2!1d-1.1698578!2d116.88035889999999!4m5!1s0x2df149298f826ab5%3A0xc8c509df2f71cdca!2sKebun%20Raya%20Balikpapan%2C%20Jalan%20Soekarno%20Hatta%20Km.%2015%2C%20Karang%20Joang%2C%20Kec.%20Balikpapan%20Utara%2C%20Kota%20Balikpapan%2C%20Kalimantan%20Timur%2076127!3m2!1d-1.136531!2d116.8580073!4m5!1s0x2df14a2c3a41846b%3A0x8fbf08ad5ecba082!2sHutan%20Lindung%20Sungai%20Wain!3m2!1d-1.1452551!2d116.83971559999999!5e0!3m2!1sid!2sid!4v1748684732437!5m2!1sid!2sid"
               width="100%" // Make iframe fluid within its parent div
-              height="100%" // Make iframe fluid within its parent div
+              height="100%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
@@ -135,8 +135,8 @@ const Tentang = () => {
           </div>
           <div className="w-full md:w-[530px] flex flex-col sm:flex-row md:flex-row gap-8"> {/* Stacks on mobile/small, then row on sm, then column on md */}
             <div className="flex flex-col gap-6 flex-1"> {/* flex-1 to take available space */}
-              <div className="text-stone-950 text-xl sm:text-2xl font-medium text-center md:text-left">Kontak</div> {/* Adjusted font size, text alignment */}
-              <div className="w-full flex flex-col gap-2.5 items-center md:items-start"> {/* Full width, centered on mobile */}
+              <div className="w-full flex flex-col gap-2.5 items-center md:items-start order-3 sm:order-2"> 
+                <div className="text-stone-950 text-xl sm:text-2xl font-medium text-center md:text-left">Kontak</div>
                 <div className="flex gap-2.5">
                   <span className="text-zinc-500 text-sm sm:text-base font-normal">+62 811 538 2227</span> {/* Adjusted font size */}
                 </div>
@@ -149,7 +149,7 @@ const Tentang = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex justify-center md:justify-start gap-3.5"> {/* Centered on mobile, left-aligned on desktop */}
+              <div className="flex justify-center md:justify-start gap-3.5 order-4 sm:order-3"> {/* Centered on mobile, left-aligned on desktop */}
                 {/* WhatsApp */}
                 <a
                   href="https://wa.me/628115382227"
@@ -189,13 +189,13 @@ const Tentang = () => {
                   </svg>
                 </a>
               </div>
-              <div className="flex justify-center md:justify-start mt-6">
+              <div className="flex justify-center md:justify-start mt-6 order-1 sm:order-4">
                 <a
                   href="https://www.google.com/maps/dir/?api=1&origin=&destination=Hutan+Lindung+Sungai+Wain,+Karang+Joang,+Kota+Balikpapan,+Kalimantan+Timur&waypoints=Kebun+Raya+Balikpapan,+Karang+Joang,+Kota+Balikpapan,+Kalimantan+Timur&travelmode=DRIVING_MODE"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div data-hierarchy="Primary" data-icon="Default" data-size="lg" data-state="Default" className="px-4 py-2.5 bg-[#cbea7b] rounded-lg shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] outline outline-1 outline-offset-[-1px] outline-[#cbea7b] inline-flex justify-center items-center gap-1.5 overflow-hidden cursor-pointer hover:bg-opacity-80 transition">
+                  <div data-hierarchy="Primary" data-icon="Default" data-size="lg" data-state="Default" className="px-4 py-2.5 bg-[#cbea7b] rounded-lg shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] outline-1 outline-offset-[-1px] outline-[#cbea7b] inline-flex justify-center items-center gap-1.5 overflow-hidden cursor-pointer hover:bg-opacity-80 transition">
                     <div className="justify-start text-black text-base font-semibold font-['Plus_Jakarta_Sans'] leading-normal">Dapatkan Petunjuk Arah</div>
                     <div className="size-5 relative bg-white/0 overflow-hidden">
                         <div className="w-full h-full items-center justify-center">
